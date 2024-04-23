@@ -1,4 +1,5 @@
 const core = require('@actions/core')
+const github = require('@actions/github')
 const { wait } = require('./wait')
 
 /**
@@ -8,25 +9,31 @@ const { wait } = require('./wait')
 async function run() {
   try {
     const ms = core.getInput('milliseconds', { required: true })
-    const nameToGreet = core.getInput('your-name', { required: true })
+    const token = core.getInput('token')
+    const title = core.getInput('title')
+    const body = core.getInput('body')
+    const assignees = core.getInput('assignees')
+    const octokit = github.getOctokit(token)
+    const context = github.context
 
-    // Debug logs are only output if the `ACTIONS_STEP_DEBUG` secret is true
-    core.debug(`Waiting ${ms} milliseconds ...`)
+    const newIssue = await octokit.rest.issues.create({
+      ...context.repo,
+      title,
+      body,
+      assignees: assignees ? assignees.split('\n') : undefined,
+      labels: [':strawberry:']
+    })
 
-    // Log the current timestamp, wait, then log the new timestamp
-    core.debug(new Date().toTimeString())
+    console.log('newIssue:::>>>', newIssue)
 
     // `wait` is a utility function that waits for the specified number of milliseconds
     await wait(parseInt(ms, 10))
 
-    core.debug(new Date().toTimeString())
-
     // Set outputs for other workflow steps to use
+    const issue = newIssue.data
+    core.setOutput('issue', JSON.stringify(issue, null, 2))
+    core.setOutput('issue_number', newIssue.data.number)
     core.setOutput('time', new Date().toTimeString())
-    core.setOutput(
-      'GreetingMsg',
-      `Hello ${nameToGreet}!, We waited for ${ms} milliseconds! 🎉 `
-    )
   } catch (error) {
     // Fail the workflow run if an error occurs
     core.setFailed(error.message)

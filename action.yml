@@ -1,6 +1,6 @@
-name: 'The name of your action here'
-description: 'Provide a description here'
-author: 'Your name or organization here'
+name: 'Open a Github Issue'
+description: 'Opens a github Issue'
+author: 'Romany Sefen'
 
 # Define your inputs here.
 inputs:
@@ -8,17 +8,24 @@ inputs:
     description: 'Milliseconds to delay the process'
     required: true
     default: '1000'
-  your-name:
-    description: 'write your name'
+  token:
     required: true
-    default: Romany Sefen
+    description: 'GIT_HUB Token'
+  title:
+    required: true
+    description: 'Title of the Issue'
+  body:
+    required: true
+    description: 'body of the Issue'
+  assignees:
+    description: 'Issue assignees'
 
 # Define your outputs here.
 outputs:
   time:
     description: 'The Time of Greeting'
-  greetingMsg:
-    description: print the greeting message
+  issue:
+    description: 'The Issue object as a json string'
 
 runs:
   using: node20

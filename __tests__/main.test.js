@@ -2,6 +2,7 @@
  * Unit tests for the action's main functionality, src/main.js
  */
 const core = require('@actions/core')
+const github = require('@actions/github')
 const main = require('../src/main')
 
 // Mock the GitHub Actions core library
@@ -9,6 +10,7 @@ const debugMock = jest.spyOn(core, 'debug').mockImplementation()
 const getInputMock = jest.spyOn(core, 'getInput').mockImplementation()
 const setFailedMock = jest.spyOn(core, 'setFailed').mockImplementation()
 const setOutputMock = jest.spyOn(core, 'setOutput').mockImplementation()
+const gitOctokitMock = jest.spyOn(github, 'getOctokit').mockImplementation()
 
 // Mock the action's main function
 const runMock = jest.spyOn(main, 'run')
@@ -29,6 +31,18 @@ describe('action', () => {
           return '500'
         default:
           return ''
+      }
+    })
+
+    gitOctokitMock.mockReturnValue({
+      rest: {
+        issues: {
+          create: jest.fn().mockResolvedValue({
+            data: {
+              number: 1
+            }
+          })
+        }
       }
     })
 
@@ -62,6 +76,17 @@ describe('action', () => {
           return ''
       }
     })
+    gitOctokitMock.mockReturnValue({
+      rest: {
+        issues: {
+          create: jest.fn().mockResolvedValue({
+            data: {
+              number: 1
+            }
+          })
+        }
+      }
+    })
 
     await main.run()
     expect(runMock).toHaveReturned()
@@ -81,6 +106,17 @@ describe('action', () => {
           throw new Error('Input required and not supplied: milliseconds')
         default:
           return ''
+      }
+    })
+    gitOctokitMock.mockReturnValue({
+      rest: {
+        issues: {
+          create: jest.fn().mockResolvedValue({
+            data: {
+              number: 1
+            }
+          })
+        }
       }
     })
 
