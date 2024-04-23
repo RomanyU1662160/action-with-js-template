@@ -5,14 +5,20 @@ author: 'Your name or organization here'
 # Define your inputs here.
 inputs:
   milliseconds:
-    description: 'Your input description here'
+    description: 'Milliseconds to delay the process'
     required: true
     default: '1000'
+  your-name:
+    description: 'write your name'
+    required: true
+    default: Romany Sefen
 
 # Define your outputs here.
 outputs:
   time:
-    description: 'Your output description here'
+    description: 'The Time of Greeting'
+  greetingMsg:
+    description: print the greeting message
 
 runs:
   using: node20
