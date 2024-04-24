@@ -20,7 +20,7 @@ async function run() {
       ...context.repo,
       title,
       body,
-      assignees: assignees ? assignees.split('\n') : undefined,
+      assignees: assignees ? assignees.split(',') : undefined,
       labels: [':strawberry:']
     })
 
