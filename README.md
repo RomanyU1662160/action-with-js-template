@@ -3,11 +3,13 @@
 [![GitHub Super-Linter](https://github.com/actions/javascript-action/actions/workflows/linter.yml/badge.svg)](https://github.com/super-linter/super-linter)
 ![CI](https://github.com/actions/javascript-action/actions/workflows/ci.yml/badge.svg)
 
-This action opens a new issue on GitHub with a title, body and a list of assignees.
+This action opens a new issue on GitHub with a title, body and a list of
+assignees.
 
-This repo is created by the GH [JS-Action-template](https://github.com/actions/javascript-action) includes compilation support, tests, a validation workflow,
-publishing, and versioning guidance.
-
+This repo is created by the GH
+[JS-Action-template](https://github.com/actions/javascript-action) includes
+compilation support, tests, a validation workflow, publishing, and versioning
+guidance.
 
 ## Initial Setup
 
@@ -93,7 +95,6 @@ uses: github-actions-course/open-issue-action@v1
     assignees: |
       alialaa
 ```
-
 
 ## Update the Action Code
 

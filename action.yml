@@ -31,5 +31,5 @@ runs:
   using: node20
   main: dist/index.js
 branding:
-  icon: "sunrise"
-  color: "orange"
+  icon: 'sunrise'
+  color: 'orange'
