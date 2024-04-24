@@ -3,31 +3,11 @@
 [![GitHub Super-Linter](https://github.com/actions/javascript-action/actions/workflows/linter.yml/badge.svg)](https://github.com/super-linter/super-linter)
 ![CI](https://github.com/actions/javascript-action/actions/workflows/ci.yml/badge.svg)
 
-This action opens a new issue on GitHub with a title, body and a list of
-assignees.
+This action opens a new issue on GitHub with a title, body and a list of assignees.
 
-This template includes compilation support, tests, a validation workflow,
+This repo is created by the GH [JS-Action-template](https://github.com/actions/javascript-action) includes compilation support, tests, a validation workflow,
 publishing, and versioning guidance.
 
-If you are new, there's also a simpler introduction in the
-[Hello world JavaScript action repository](https://github.com/actions/hello-world-javascript-action).
-
-## Create Your Own Action
-
-To create your own action, you can use this repository as a template! Just
-follow the below instructions:
-
-1. Click the **Use this template** button at the top of the repository
-1. Select **Create a new repository**
-1. Select an owner and name for your new repository
-1. Click **Create repository**
-1. Clone your new repository
-
-> [!IMPORTANT]
->
-> Make sure to remove or update the [`CODEOWNERS`](./CODEOWNERS) file! For
-> details on how to use this file, see
-> [About code owners](https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-code-owners).
 
 ## Initial Setup
 
@@ -76,6 +56,44 @@ input(s) and output(s). For details about this file, see
 
 When you copy this repository, update `action.yml` with the name, description,
 inputs, and outputs for your action.
+
+## Inputs
+
+### `token`
+
+**Required** A GitHub token with issues:write scope.
+
+### `title`
+
+**Required** The title of the issue
+
+### `body`
+
+The body of the issue.
+
+### `assignees`
+
+A list of GitHub usernames to assign to the issue.
+
+## Outputs
+
+### `issue`
+
+The created issue object as a json string.
+
+## Example usage
+
+```yaml
+uses: github-actions-course/open-issue-action@v1
+  id: issue
+  with:
+    token: ${{ secrets.GITHUB_TOKEN }}
+    title: Test Issue
+    body: Test issue body
+    assignees: |
+      alialaa
+```
+
 
 ## Update the Action Code
 
