@@ -2,6 +2,10 @@ name: release and tag
 on:
   release:
     types: [published, edited]
+permissions:
+  contents: read
+  issues: write
+  actions: write
 jobs:
   build:
     runs-on: ubuntu-latest

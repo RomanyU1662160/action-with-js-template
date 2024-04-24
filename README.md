@@ -6,7 +6,7 @@
 This action opens a new issue on GitHub with a title, body and a list of
 assignees.
 
-This repo is created by the GH
+This repository is created by the GH
 [JS-Action-template](https://github.com/actions/javascript-action) includes
 compilation support, tests, a validation workflow, publishing, and versioning
 guidance.
