@@ -3,7 +3,8 @@
 [![GitHub Super-Linter](https://github.com/actions/javascript-action/actions/workflows/linter.yml/badge.svg)](https://github.com/super-linter/super-linter)
 ![CI](https://github.com/actions/javascript-action/actions/workflows/ci.yml/badge.svg)
 
-Use this template to bootstrap the creation of a JavaScript action. :rocket:
+This action opens a new issue on GitHub with a title, body and a list of
+assignees.
 
 This template includes compilation support, tests, a validation workflow,
 publishing, and versioning guidance.
