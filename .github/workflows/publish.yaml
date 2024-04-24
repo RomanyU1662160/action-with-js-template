@@ -1,0 +1,17 @@
+name: release and tag
+on:
+  release:
+    types: [published, edited]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout
+        uses: actions/checkout@v4
+        with:
+          ref: ${{github.event.release.tag_name}}
+      - name: install deps
+        run: npm ci
+      - uses: JasonEtco/build-and-tag-action@v2
+        env:
+          GITHUB_TOKEN: ${{github.token}}
