@@ -61,8 +61,7 @@ jobs:
           token: ${{secrets.GITHUB_TOKEN}}
           title: Test create issue
           body: Test Body
-          assignees: |
-            Romany-GL
+          assignees: Romany-GL
 
       - name: Print Output
         id: output
